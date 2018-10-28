@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
 app.get('/hello', function(req, res){
   res.json({greetings: "Hello, API"});
 });
-
-app.listen(process.env.PORT || 3000, function () {
-  console.log('Node.js listening ...');
+const port = 4400
+app.listen(/**process.env.PORT ||**/ port, function () {
+  console.log(`Node.js listening ...${port}`);
 });

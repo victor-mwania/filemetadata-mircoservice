@@ -29,6 +29,6 @@ app.post('/api/fileanalyse', upload.single('upfile'),  function( req, res) {
   })
 })
 const port = 4400
-app.listen(/**process.env.PORT ||**/ port, function () {
+app.listen(process.env.PORT || port, function () {
   console.log(`Node.js listening ...${port}`);
 });

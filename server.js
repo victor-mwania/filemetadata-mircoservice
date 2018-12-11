@@ -2,6 +2,8 @@
 
 var express = require('express');
 var cors = require('cors');
+var multer = require('multer');
+var upload = multer({dest: 'uploads/'})
 
 // require and use "multer"...
 
@@ -17,6 +19,15 @@ app.get('/', function (req, res) {
 app.get('/hello', function(req, res){
   res.json({greetings: "Hello, API"});
 });
+
+// endpoint for the file upload
+app.post('/api/fileanalyse', upload.single('upfile'),  function( req, res) {
+  res.json({
+    'name': req.file.originalname,
+    'type': req.file.mimetype,
+    'size': req.file.size,
+  })
+})
 const port = 4400
 app.listen(/**process.env.PORT ||**/ port, function () {
   console.log(`Node.js listening ...${port}`);
